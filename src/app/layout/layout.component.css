@@ -1,0 +1,13 @@
+.layout{
+    height: 100vh;
+    width: 100vw;
+    background-color: #f1f1f1;
+    padding: 4rem;
+}
+
+.content{
+    height: 100%;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}

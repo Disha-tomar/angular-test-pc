@@ -1,0 +1,232 @@
+.page-container{
+    height: 100%;
+    width: 100%;
+}
+
+.page-header{
+    background-color: #f9f9f9;
+    height: var(--height-page-header);
+    width: 100%;
+    padding: 15px;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.page-body{
+    display: flex;
+    flex-direction: row;
+    /* background-color: yellow; */
+    width: 100%;
+    height: calc(100% - var(--height-page-header));
+    overflow: hidden;
+
+}
+
+.active{
+    background-color: rgb(31 48 84);
+   
+    color: #dedede;
+
+}
+
+.header-menu-btn{
+    /* background-color: rgb(31 48 84); */
+    height: 100%;
+    align-items: center;
+    padding: 0 1.8rem;
+    font-size: 1.3rem;
+   cursor: pointer;
+    border-radius: 3px;
+    font-weight: 500;
+}
+
+.header-menu-btn:not(:first-child){
+    margin-left: 25px;
+}
+
+
+/* table */
+
+
+
+
+
+
+
+.table-container{
+    height: calc(100% - 85px );
+    width: 100%;
+    /* border: solid #e7eaec 1px; */
+    position: relative;
+  
+    /* background-color: red; */
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  
+   
+    /* background-color: red; */
+}
+
+
+
+.table-wrapper{
+    table-layout: fixed;
+    overflow-y: auto;
+    overflow-x: auto;
+    /* padding-top: 10px; */
+
+    height: calc(100% - 60px);
+    /* height: calc(100% - 65px - 80px); */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    /* background-color: yellow; */
+
+}
+
+
+
+
+
+
+
+
+
+
+th{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: rgb(234, 234, 234) solid 2px !important;
+    
+}
+
+td {
+    font-size: 13px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   padding: 0 10px;
+}
+
+.mat-cell {
+    padding: 0 2px;
+    word-break: break-all;
+}
+
+table{
+    /* padding: 10px 20px; */
+    height: 100%;
+    max-height: 60px;
+}
+
+
+
+.filter-wrapper{
+    margin-top: 10px;
+    width: 80%;
+   
+}
+
+
+
+
+
+
+.mat-row{
+    /* background-color: rgba(0,0,0,.05); */
+    /* border-top: 1px solid #e7eaec; */
+    border-bottom: rgb(241 241 241) solid 2px ;
+    height: 60px !important;
+}
+
+tr{
+    height: 60px !important;
+}
+
+.mat-row:hover{
+    background-color: rgba(0, 0, 0, 0.034);
+    /* border-top: 1px solid #e7eaec; */
+    /* border-bottom: rgb(241 241 241) solid 2px ; */
+}
+
+
+
+
+
+
+
+
+.mat-column-List-Name{
+    font-size: 1.6rem;
+    font-weight: 600;
+
+}
+
+.mat-column-No--of-Entities{
+   
+    font-weight: 600;
+    color: rgb(54, 54, 54);
+   
+
+}
+
+
+.table-icon{
+    color: rgb(217, 217, 217);
+}
+
+
+
+    input{
+        width: 520px;
+        padding: 9px 15px;
+        border: #ebebeb 2px solid;
+        border-radius: 3px;
+        font-weight: 500;
+
+    }
+
+    input:focus{
+        /* outline: rgb(136, 176, 255); */
+        outline: none !important;
+        border:2px solid rgba(0, 119, 255, 0.329);
+    }
+
+    input::placeholder{
+        color: #d2d2d2;
+        font-size: 1.4rem;
+    }
+
+
+    .table-details-btn{
+        background-color: transparent;
+        border: none;
+        font-family: var(--font-default);
+        font-size: 1.3rem;
+        color:#031d3099;
+        font-weight: 500;
+        padding: 6px 15px;
+        cursor: pointer;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+        border-bottom: transparent 4px solid;
+    }
+
+    .mat-row:hover .table-details-btn {
+        color:#031d30;
+        background-color: white;
+        border-bottom: #031d30 4px solid;
+       
+   
+    }
+
+    .mat-row:hover  .table-icon{
+       color: rgb(91, 91, 91);
+    }
+
+    .icon-cell fa-icon:not(:first-child){
+        margin-left: 20px;
+    }
+
+    th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+        padding-left: 40px;
+    }
