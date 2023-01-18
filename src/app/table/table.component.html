@@ -1,14 +1,11 @@
 <div class="page-container flex-column">
   <div class="page-header flex-row">
-    <div style="height: 100%">
-      <ul
-        style="list-style: none; height: 100%; color: #5c5c5c"
-        class="flex-row"
-      >
+    <div class="menu-wrapper">
+      <ul class="flex-row">
         <li
           *ngFor="let menu of headerButtonsArray; let i = index"
           [class.active]="i === 0"
-          class="flex-row header-menu-btn"
+          class="flex-row"
         >
           <span
             ><fa-icon [icon]="menu.icon" style="margin-right: 1rem"></fa-icon
@@ -17,7 +14,7 @@
         </li>
       </ul>
     </div>
-    <div>
+    <div class="form-wrapper">
       <form>
         <input
           (keyup)="getFilterValue($event.target.value)"
@@ -27,41 +24,30 @@
     </div>
   </div>
   <div class="page-body">
-    <div style="overflow: hidden; display: block; height: 100%; width: 80%">
-      <div
-        style="width: 100%; height: 100%; overflow-y: auto; table-layout: fixed"
-      >
-        <table mat-table [dataSource]="dataSource" style="width: 100%">
+    <!-- mat Table start -->
+    <div class="table-container">
+      <div class="table-wrapper">
+        <table mat-table [dataSource]="dataSource">
           <ng-container
             [matColumnDef]="col"
             *ngFor="let col of dataColumns; let i = index"
           >
-            <th
-              mat-header-cell
-              *matHeaderCellDef
-              class="table-header-cell"
-              style="background-color: white"
-            >
-              <div
-                style="
-                  display: flex;
-                  flex-direction: column;
-                  align-items: flex-start;
-                  padding: 2px 2px;
-                "
-              >
-                <div style="color: rgb(156 156 156); padding: 5px">
-                  {{ dataColumns[i] | titlecase }}
-                </div>
-              </div>
+            <th mat-header-cell *matHeaderCellDef>
+              {{ dataColumns[i] | titlecase }}
             </th>
             <div>
-              <td
-                mat-cell
-                *matCellDef="let element"
-                style="border-bottom: 2px rgb(241 241 241) solid"
-              >
-                <div *ngIf="col != 'date'">{{ element[col] }}</div>
+              <td mat-cell *matCellDef="let element">
+                <div
+                  *ngIf="col != 'date'"
+                  [ngStyle]="{
+                    color:
+                      col == 'List Name' && element['No. of Entities'] == 0
+                        ? '#00b4ffa6'
+                        : ''
+                  }"
+                >
+                  {{ element[col] }}
+                </div>
                 <div *ngIf="col == 'date'">
                   <span *ngIf="!element[col]">
                     <fa-icon [icon]="timeIcon" class="table-icon"></fa-icon
@@ -73,36 +59,13 @@
           </ng-container>
 
           <ng-container matColumnDef="Actions">
-            <th
-              mat-header-cell
-              *matHeaderCellDef
-              class="table-header-cell"
-              style="background-color: white"
-            >
-              <div
-                style="
-                  display: flex;
-                  flex-direction: column;
-                  align-items: flex-start;
-                  padding: 0 2px;
-                "
-              >
-                <div style="color: rgb(156 156 156); padding-top: 5px">
-                  Actions
-                </div>
-              </div>
-            </th>
-            <td
-              mat-cell
-              *matCellDef="let element"
-              style="border-bottom: 2px rgb(241 241 241) solid"
-            >
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let element">
               <div *ngIf="element['No. of Entities'] == 0">
                 <fa-icon class="table-icon" [icon]="mailIcon"></fa-icon>
               </div>
               <div
-                class="icon-cell"
-                style="display: flex"
+                class="icon-cell flex-row"
                 *ngIf="element['No. of Entities'] > 0"
               >
                 <fa-icon class="table-icon" [icon]="mailIcon"></fa-icon>
@@ -113,28 +76,8 @@
           ></ng-container>
 
           <ng-container matColumnDef="Details">
-            <th
-              mat-header-cell
-              *matHeaderCellDef
-              class="table-header-cell"
-              style="background-color: white"
-            >
-              <div
-                style="
-                  display: flex;
-                  flex-direction: column;
-                  align-items: flex-start;
-                  padding: 0 2px;
-                "
-              >
-                <div style="color: rgb(156 156 156); padding-top: 5px"></div>
-              </div>
-            </th>
-            <td
-              mat-cell
-              *matCellDef="let element"
-              style="border-bottom: 2px rgb(241 241 241) solid"
-            >
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
               <button
                 class="table-details-btn"
                 (click)="getDetailsHandler($event, element)"
@@ -147,57 +90,21 @@
           <tr
             mat-header-row
             *matHeaderRowDef="allColumnsTobeDisplayed; sticky: true"
-            class="table-header"
           ></tr>
           <tr
-            style="height: 60px !important"
             mat-row
             *matRowDef="let row; columns: allColumnsTobeDisplayed"
           ></tr>
         </table>
       </div>
     </div>
-    <div
-      style="
-        border-left: 2px solid rgb(246, 246, 246);
-        padding: 15px;
-        width: 20%;
-        height: 100%;
-      "
-      class="flex-col"
-    >
-      <div
-        style="
-          padding: 18px;
-          background-color: rgb(244, 244, 244);
-          border-radius: 3px;
-          width: 100%;
-          color: rgb(38, 64, 120);
-          font-size: 1.3rem;
-          font-weight: 500;
-        "
-      >
-        Details
-      </div>
+    <!-- mat Table end -->
+    <div class="details-container flex-col">
+      <div class="details-title">Details</div>
       <div style="padding: 30px 0">
         <div *ngFor="let item of selectedDetailsObject | keyvalue">
-          <div
-            *ngIf="item.key !== 'id'"
-            style="
-              font-size: 1.3rem;
-              color: rgb(39, 77, 158);
-              position: relative;
-              display: flex;
-              align-items: flex-start;
-              margin-bottom: 12px;
-            "
-          >
-            <span style="display: inline-block; width: 100px"
-              >{{ item.key }}:</span
-            ><span
-              style="display: inline-block; width: 100px; font-weight: 500"
-              >{{ item.value }}</span
-            >
+          <div class="details-description-wrapper" *ngIf="item.key !== 'id'">
+            <span>{{ item.key }}:</span><span>{{ item.value }}</span>
           </div>
         </div>
       </div>

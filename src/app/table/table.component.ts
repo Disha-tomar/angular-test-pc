@@ -115,8 +115,6 @@ export class TableComponent implements OnInit {
   dataSource = new MatTableDataSource(this.data);
 
   ngOnInit(): void {
-    // this.dataSource.data = this.data;
-
     this.dataColumns = Object.keys(Object.values(this.data)[0]).slice(1);
 
     this.allColumnsTobeDisplayed = this.dataColumns.concat([
@@ -125,15 +123,15 @@ export class TableComponent implements OnInit {
     ]);
   }
 
+  // details
   getDetailsHandler(event, element) {
-    console.log(element);
     this.selectedDetailsObject = element;
   }
 
+  //  filter table
   getFilterValue(filterValue) {
-    console.log(filterValue);
     filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
   }
 }
